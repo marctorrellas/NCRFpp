@@ -26,7 +26,7 @@ class SentClassifier(nn.Module):
         self.word_hidden = WordSequence(data)
 
     def calculate_loss(
-            self, word_inputs, feature_inputs, word_seq_lengths, batch_label
+        self, word_inputs, feature_inputs, word_seq_lengths, batch_label
     ):
         outs = self.word_hidden.sentence_representation(
             word_inputs, feature_inputs, word_seq_lengths

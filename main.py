@@ -571,8 +571,7 @@ def train(data):
             current_score = f
             logger.info(
                 "Dev: time: %.2fs, speed: %.2fst/s; acc: %.4f, p: %.4f, r: %.4f, "
-                "f: %.4f"
-                % (dev_cost, speed, acc, p, r, f)
+                "f: %.4f" % (dev_cost, speed, acc, p, r, f)
             )
         else:
             current_score = acc
@@ -596,8 +595,7 @@ def train(data):
         if data.seg:
             logger.info(
                 "Test: time: %.2fs, speed: %.2fst/s; acc: %.4f, p: %.4f, r: %.4f, "
-                "f: %.4f"
-                % (test_cost, speed, acc, p, r, f)
+                "f: %.4f" % (test_cost, speed, acc, p, r, f)
             )
         else:
             logger.info(
