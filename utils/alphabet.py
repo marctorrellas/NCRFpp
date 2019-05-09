@@ -64,7 +64,9 @@ class Alphabet:
         try:
             return self.instances[index - 1]
         except IndexError:
-            print('WARNING:Alphabet get_instance ,unknown instance, return the first label.')
+            print(
+                "WARNING:Alphabet get_instance ,unknown instance, return the first label."
+            )
             return self.instances[0]
 
     def size(self):
@@ -74,7 +76,9 @@ class Alphabet:
         return len(self.instances) + 1
 
     def iteritems(self):
-        if sys.version_info[0] < 3:  # If using python3, dict item access uses different syntax
+        if (
+            sys.version_info[0] < 3
+        ):  # If using python3, dict item access uses different syntax
             return self.instance2index.iteritems()
         else:
             return self.instance2index.items()
@@ -82,7 +86,7 @@ class Alphabet:
     def enumerate_items(self, start=1):
         if start < 1 or start >= self.size():
             raise IndexError("Enumerate is allowed between [1 : size of the alphabet)")
-        return zip(range(start, len(self.instances) + 1), self.instances[start - 1:])
+        return zip(range(start, len(self.instances) + 1), self.instances[start - 1 :])
 
     def close(self):
         self.keep_growing = False
@@ -91,7 +95,7 @@ class Alphabet:
         self.keep_growing = True
 
     def get_content(self):
-        return {'instance2index': self.instance2index, 'instances': self.instances}
+        return {"instance2index": self.instance2index, "instances": self.instances}
 
     def from_json(self, data):
         self.instances = data["instances"]
@@ -106,7 +110,10 @@ class Alphabet:
         """
         saving_name = name if name else self.__name
         try:
-            json.dump(self.get_content(), open(os.path.join(output_directory, saving_name + ".json"), 'w'))
+            json.dump(
+                self.get_content(),
+                open(os.path.join(output_directory, saving_name + ".json"), "w"),
+            )
         except Exception as e:
             print("Exception: Alphabet is not saved: " % repr(e))
 
@@ -118,4 +125,6 @@ class Alphabet:
         :return:
         """
         loading_name = name if name else self.__name
-        self.from_json(json.load(open(os.path.join(input_directory, loading_name + ".json"))))
+        self.from_json(
+            json.load(open(os.path.join(input_directory, loading_name + ".json")))
+        )
